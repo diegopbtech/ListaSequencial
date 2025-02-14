@@ -23,14 +23,19 @@ int main() {
     while(addNum){
         cout << "Adicione um número na posição " << indice << ": ";
         cin >> numero;
-        listaseq->inserirElementoPorPosicao(indice, numero);
-        cout << "Adicionar mais numeros? [S] - SIM ou [N] - NÃO: ";
-        cin >> opcao;
-        indice++;
-        if(opcao == 'N' || opcao == 'n'){
-            addNum = false;
+        if(listaseq->inserirElementoPorPosicao(indice, numero)){
+            cout << "Adicionar mais numeros? [S] - SIM ou [N] - NÃO: ";
+            cin >> opcao;
+            indice++;
+            if(opcao == 'N' || opcao == 'n'){
+                addNum = false;
+                break;
+            }
+        }else{
+            cout << "Você passou do tamanho máximo permitido pelo array\n\n";
             break;
         }
+        
     }
 
     do {
@@ -98,7 +103,7 @@ int main() {
             if(listaseq->inserirElementoPorPosicao(posNum, novoValor)){
                 cout << "Valor inserido com sucesso!\n\n";
             }else{
-                cout << "Houve algum erro!";
+                cout << "Houve algum erro!\n\n";
             }
         }
 
